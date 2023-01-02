@@ -1,0 +1,232 @@
+
+<div id="parentDiv" scrollSpy [spiedTags]="['DIV']" (sectionChange)="onSectionChange($event)"
+  style="height:100vh;overflow-y: scroll;">
+  <div class=" sticky-sm-top">
+    <nav class="navbar navbar-expand-lg navbar-light py-0 bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand text-white" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link cursor-pointer py-3" [ngClass]="{'active':isActiveNav=='about'}" aria-current="page"
+              (click)="scrollTo('about')"><fa-icon [icon]="infoIcon"></fa-icon> About</a>
+  
+            </li>
+            <li class="nav-item">
+              
+            <a class="nav-link cursor-pointer py-3" [ngClass]="{'active':isActiveNav=='hireMe'}" (click)="scrollTo('hireMe')"><fa-icon [icon]="briefCaseIcon"></fa-icon> Hire
+              Me</a>
+  
+            </li>
+            <li class="nav-item">
+              <a class="nav-link cursor-pointer py-3" [ngClass]="{'active':isActiveNav=='OpenSource'}"
+              (click)="scrollTo('OpenSource')"><fa-icon [icon]="codeIcon"></fa-icon> Open source</a>
+            </li>
+            <li class="nav-item">
+              
+           
+            <a class="nav-link cursor-pointer py-3" [ngClass]="{'active':isActiveNav=='mobileApps'}"
+            (click)="scrollTo('mobileApps')"><fa-icon [icon]="mobileIcon"></fa-icon> Mobile apps</a>
+            </li>
+          </ul>
+
+
+        </div>
+      </div>
+    </nav>
+  </div>
+  <div id="about" class="bg-info py-4">
+    <app-about></app-about>
+
+  </div>
+  <!-- <router-outlet></router-outlet> -->
+
+  <div id="hireMe">
+    <div class="py-4">
+      <div class="container">
+        <h1><fa-icon [icon]="briefCaseIcon"></fa-icon> Hire Me</h1>
+        <p>I am a highly experienced Typescript developer, with an efficient work ethic, available for short to medium
+          term remote contracting work.</p>
+        <p>Things I can help you with:</p>
+        <ul>
+          <li>I can help with anything angular related, including, but not limited to: component design and
+            implementation, migration strategies from angularjs to angular, high level architectural planning and
+            performance optimisations. I have been using angularjs since version 1.0 was released in 2012.</li>
+          <li>I am extremely proficient at building mobile apps with the ionic framework, and have shipped full blown
+            apps from concept to production in just a few months.</li>
+          <li>I have a very deep knowledge of build tooling, especially webpack, and have frequently contributed back to
+            its ecosystem of plugins and loaders. I can fine tune configuration to optimise build times, reduce bundle
+            sizes to as small as possible, and demystify the inner workings to members of your team.</li>
+          <li>I have lots of experience configuring CI systems to automatically run tests on every build, and
+            automatically deploy to beta and production environments.</li>
+          <li>I am a firm believer in writing robust and maintainable code. All of the code I write follows industry
+            best practises, and is well tested.</li>
+          <li>I am extremely well versed in the Javascript language as a whole, aware of all of its strengths and
+            weaknesses, and am up to date with using the latest esnext features. Consequently, I am very comfortable
+            working on projects outside of the angular framework, such as in node or react.</li>
+          <li>Finally, as a result of working for startups my entire career, I am very comfortable working to tight time
+            scales by leading and managing teams to get a project over the line to completion. On the flip side, I am
+            also very happy to work independently, or with a team, for someone else with a "no-ego" attitude.</li>
+        </ul>
+        <div>
+          <span>For examples of the quality and quantity of my work, please checkout the numerous projects on my Github
+            account.</span>
+          <div class="row pb-3">
+            <div class="col-md">
+              <div class="form-floating">
+                <input type="email" class="form-control" id="floatingInputGrid" placeholder="name@example.com">
+                <label for="floatingInputGrid">Your name</label>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="form-floating">
+                <input type="email" class="form-control" id="floatingInputGrid" placeholder="name@example.com">
+                <label for="floatingInputGrid">Your email address</label>
+              </div>
+            </div>
+          </div>
+          <div class="row pb-3">
+            <div class="col-md">
+              <div class="form-floating">
+                <input type="email" class="form-control" id="floatingInputGrid" placeholder="name@example.com">
+                <label for="floatingInputGrid">Company website</label>
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="form-floating">
+                <input type="email" class="form-control" id="floatingInputGrid" placeholder="name@example.com">
+                <label for="floatingInputGrid">Contract duration (optional)</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-floating">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+              style="height: 100px"></textarea>
+            <label for="floatingTextarea2">Comments</label>
+          </div>
+          <div class="text-center py-3">
+            <a href="#" class="btn btn-primary w-25 h-15">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="OpenSource" class="bg-info py-4">
+    <div class="container">
+      <h1><fa-icon [icon]="codeIcon"></fa-icon> Open source</h1>
+      <p>I contribute regularly to the open source community and strive to give back in whatever way I can.</p>
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <div class="card text-center border border-dark">
+            <h5 class="card-header bg-dark text-white">Special title treatment</h5>
+            <div class="card-body">
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            </div>
+            <div class="card-footer bg-light"><a href="#" class="btn btn-primary">Go somewhere</a></div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="card text-center border border-dark">
+            <h5 class="card-header bg-dark text-white">Special title treatment</h5>
+            <div class="card-body">
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            </div>
+            <div class="card-footer bg-light"><a href="#" class="btn btn-primary">Go somewhere</a></div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="card text-center border border-dark">
+            <h5 class="card-header bg-dark text-white">Special title treatment</h5>
+            <div class="card-body">
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            </div>
+            <div class="card-footer bg-light"><a href="#" class="btn btn-primary">Go somewhere</a></div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="card text-center border border-dark">
+            <h5 class="card-header bg-dark text-white">Special title treatment</h5>
+            <div class="card-body">
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            </div>
+            <div class="card-footer bg-light"><a href="#" class="btn btn-primary">Go somewhere</a></div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="card text-center border border-dark">
+            <h5 class="card-header bg-dark text-white">Special title treatment</h5>
+            <div class="card-body">
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            </div>
+            <div class="card-footer bg-light"><a href="#" class="btn btn-primary">Go somewhere</a></div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="card text-center border border-dark">
+            <h5 class="card-header bg-dark text-white">Special title treatment</h5>
+            <div class="card-body">
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            </div>
+            <div class="card-footer bg-light"><a href="#" class="btn btn-primary">Go somewhere</a></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <div id="mobileApps">
+    <div id="contact" class="py-4">
+      <div class="container">
+        <h1><fa-icon [icon]="mobileIcon"></fa-icon> Mobile apps</h1>
+        <p>A couple of the most recent apps I've built using the awesome Ionic framework.</p>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card">
+              <h5 class="card-header bg-dark text-white">Special title treatment</h5>
+              <div class="card-body">
+                <p class="card-text text-center">With supporting text below as a natural lead-in to additional content.
+                </p>
+              </div>
+              <div class="card-footer bg-transprant text-center">
+                <div class="d-flex justify-content-around">
+                  <a href="#" class="btn btn-warning">Go somewhere</a>
+                  <a href="#" class="btn btn-warning">Go somewhere</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card">
+              <h5 class="card-header bg-dark text-white">Special title treatment</h5>
+              <div class="card-body">
+                <p class="card-text text-center">With supporting text below as a natural lead-in to additional content.
+                </p>
+              </div>
+              <div class="card-footer bg-transprant text-center">
+                <div class="d-flex justify-content-around">
+                  <a href="#" class="btn btn-warning">Go somewhere</a>
+                  <a href="#" class="btn btn-warning">Go somewhere</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<div>
+  <footer class="text-center bg-light py-3">
+    Website source available <a href="">here</a> and <a href="">here</a> |
+    Powered by <a href="" target="_blank">GitHub pages</a>, <a href="">Heroku</a> and <a href="">Cloudflare</a>
+  </footer>
+</div>
+  
+  </div>
