@@ -32,7 +32,9 @@ export class HomeComponent {
     
     this.isActiveNav = sectionId;
   }
-
+  sendMail(){
+    
+  }
   onSectionChange(sectionId: string) {
     this.currentSection = sectionId;
     this.isActiveNav = sectionId;
