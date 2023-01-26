@@ -21,6 +21,8 @@
     "@fortawesome/angular-fontawesome": "^0.12.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
     "bootstrap": "^5.2.3",
+    "ngx-bootstrap": "^10.2.0",
+    "ngx-bootstrap-modal": "^2.0.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
