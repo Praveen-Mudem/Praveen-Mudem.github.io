@@ -10,6 +10,7 @@ import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontaweso
 import { ModalModule } from "ngx-bootstrap/modal";
 import { VideopopComponent } from './components/videopop/videopop.component';
 import { ImagepopupComponent } from './components/imagepopup/imagepopup.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +18,8 @@ import { ImagepopupComponent } from './components/imagepopup/imagepopup.componen
     ScrollSpyDirective,
     AboutComponent,
     VideopopComponent,
-    ImagepopupComponent
+    ImagepopupComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -25,6 +27,7 @@ import { ImagepopupComponent } from './components/imagepopup/imagepopup.componen
     // FaIconLibrary,
     FontAwesomeModule,
     ModalModule.forRoot(),
+    HttpClientModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
