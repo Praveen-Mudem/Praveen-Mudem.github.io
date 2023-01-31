@@ -23,14 +23,16 @@
 
             </li>
             <li class="nav-item">
-              <a class="nav-link cursor-pointer py-3" [ngClass]="{'active':isActiveNav=='OpenSource'}"
+              <a class="nav-link cursor-pointer py-3" [ngClass]="{'active':isActiveNav=='videos'}"
                 (click)="scrollTo('OpenSource')"><fa-icon [icon]="videoIcon"></fa-icon> Videos</a>
             </li>
             <li class="nav-item">
-
-
-              <a class="nav-link cursor-pointer py-3" [ngClass]="{'active':isActiveNav=='mobileApps'}"
+              <a class="nav-link cursor-pointer py-3" [ngClass]="{'active':isActiveNav=='photos'}"
                 (click)="scrollTo('mobileApps')"><fa-icon [icon]="mobileIcon"></fa-icon> Photos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link cursor-pointer py-3" [ngClass]="{'active':isActiveNav=='upload'}"
+                (click)="scrollTo('mobileApps')"><fa-icon [icon]="mobileIcon"></fa-icon> Upload</a>
             </li>
           </ul>
 
@@ -113,7 +115,7 @@
   </div>
 
 
-  <div id="OpenSource" class="bg-info py-4">
+  <div id="videos" class="bg-info py-4">
     <div class="container">
       <h1><fa-icon [icon]="videoIcon"></fa-icon> My Videos</h1>
       <p>Here are my personal video files</p>
@@ -158,7 +160,7 @@
     </div>
 
   </div>
-  <div id="mobileApps">
+  <div id="photos">
     <div id="contact" class="py-4">
       <div class="container">
         <h1><fa-icon [icon]="mobileIcon"></fa-icon> My Photos</h1>
