@@ -17,6 +17,7 @@ export class HomeComponent {
   infoIcon = faInfoCircle;
   videoIcon = faVideo;
   mobileIcon = faMobileScreen;
+  videoPlayIcon=faPlayCircle;
  
 
 
