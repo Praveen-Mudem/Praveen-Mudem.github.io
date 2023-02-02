@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { CommonService } from 'src/app/service/common.service';
+
 
 @Component({
   selector: 'app-imagepopup',
@@ -8,8 +10,14 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 })
 export class ImagepopupComponent implements OnInit {
 list:any[];
-constructor(public bsModalSer:BsModalService, public bsModalHref:BsModalRef){}
+imgList:any[];
+constructor(public bsModalSer:BsModalService, public bsModalHref:BsModalRef, public commonSer:CommonService){}
 ngOnInit() {
-  
+  this.getimage();
+}
+getimage(){
+  this.commonSer.getmyimagefiles().subscribe((res:any)=>{
+    this.imgList=res
+  })
 }
 }

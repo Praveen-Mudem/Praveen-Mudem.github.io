@@ -82,7 +82,7 @@ OnSubmit(filedata:any){
     this.bsModalHref = this.bsModalSer.show(VideopopComponent, { id: 1, initialState, class: 'modal-xl', ignoreBackdropClick: true });
   }
   openImagePop(id) {
-    debugger;
+   
     const initialState = {
       list: [
         { id: id }
@@ -92,7 +92,7 @@ OnSubmit(filedata:any){
     this.bsModalHref = this.bsModalSer.show(ImagepopupComponent, { id: 1, initialState, class: 'modal-xl', ignoreBackdropClick: true });
   }
   openUploadImgVideo(id) {
-    debugger;
+    
     const initialState = {
       list: [
         { id: id }

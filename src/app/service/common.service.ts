@@ -22,4 +22,7 @@ export class CommonService {
    getmyvideofiles(){
     return this.http.get(this.baseUrl+'/getmyvideofiles');
    }
+   getmyimagefiles(){
+    return this.http.get(this.baseUrl+'/getmyimagefiles');
+   }
 }
