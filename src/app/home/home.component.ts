@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { faBriefcase, faInfoCircle, faCode, faMobileScreen, faVideo, faClose, faPlayCircle } from '@fortawesome/free-solid-svg-icons';
+import { faBriefcase, faInfoCircle, faCode, faMobileScreen, faVideo, faClose, faPlayCircle, faUpload } from '@fortawesome/free-solid-svg-icons';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ImagepopupComponent } from '../components/imagepopup/imagepopup.component';
+import { UploadImgVideoComponent } from '../components/upload-img-video/upload-img-video.component';
 import { VideopopComponent } from '../components/videopop/videopop.component';
+
 
 @Component({
   selector: 'app-home',
@@ -17,7 +19,8 @@ export class HomeComponent {
   infoIcon = faInfoCircle;
   videoIcon = faVideo;
   mobileIcon = faMobileScreen;
-  videoPlayIcon=faPlayCircle;
+  videoPlayIcon = faPlayCircle;
+  uploadIcon = faUpload;
  
 
 
@@ -26,6 +29,22 @@ export class HomeComponent {
   urlSafe: SafeResourceUrl;
   docUrl: string = '../../assets/videos/video1.mp4';
   bsModalHref: BsModalRef;
+
+
+  list:any[];
+  imageUrl:any;
+  afuConfig = {
+    uploadAPI: {
+      url:"https://example-file-upload-api",
+    }
+};
+handleFileInput(event){
+
+}
+OnSubmit(filedata:any){
+
+}
+
   constructor(public sanitizer: DomSanitizer, public bsModalSer: BsModalService) {
     this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(this.docUrl);
   }
@@ -63,7 +82,7 @@ export class HomeComponent {
     this.bsModalHref = this.bsModalSer.show(VideopopComponent, { id: 1, initialState, class: 'modal-xl', ignoreBackdropClick: true });
   }
   openImagePop(id) {
-    debugger;
+   
     const initialState = {
       list: [
         { id: id }
@@ -71,5 +90,15 @@ export class HomeComponent {
 
     };
     this.bsModalHref = this.bsModalSer.show(ImagepopupComponent, { id: 1, initialState, class: 'modal-xl', ignoreBackdropClick: true });
+  }
+  openUploadImgVideo(id) {
+    
+    const initialState = {
+      list: [
+        { id: id }
+      ]
+
+    };
+    this.bsModalHref = this.bsModalSer.show(UploadImgVideoComponent, { id: 1, initialState, class: 'modal-xl', ignoreBackdropClick: true });
   }
 }

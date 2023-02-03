@@ -11,6 +11,9 @@ import { ModalModule } from "ngx-bootstrap/modal";
 import { VideopopComponent } from './components/videopop/videopop.component';
 import { ImagepopupComponent } from './components/imagepopup/imagepopup.component';
 import { HttpClientModule } from '@angular/common/http';
+import { UploadImgVideoComponent } from './components/upload-img-video/upload-img-video.component';
+import { AngularFileUploaderModule } from 'angular-file-uploader';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     AboutComponent,
     VideopopComponent,
     ImagepopupComponent,
+    UploadImgVideoComponent,
+   
     
   ],
   imports: [
@@ -27,7 +32,8 @@ import { HttpClientModule } from '@angular/common/http';
     // FaIconLibrary,
     FontAwesomeModule,
     ModalModule.forRoot(),
-    HttpClientModule 
+    HttpClientModule,
+    AngularFileUploaderModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
