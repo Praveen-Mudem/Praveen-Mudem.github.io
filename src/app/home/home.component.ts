@@ -5,6 +5,8 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ImagepopupComponent } from '../components/imagepopup/imagepopup.component';
 import { UploadImgVideoComponent } from '../components/upload-img-video/upload-img-video.component';
 import { VideopopComponent } from '../components/videopop/videopop.component';
+import { GallaryFileInfo } from '../model/common.model';
+import { CommonService } from '../service/common.service';
 
 
 @Component({
@@ -38,6 +40,11 @@ export class HomeComponent {
       url:"https://example-file-upload-api",
     }
 };
+fileUploading:boolean;
+url:any;
+  format:any;
+FileInfo:GallaryFileInfo = new GallaryFileInfo();
+
 handleFileInput(event){
 
 }
@@ -45,7 +52,7 @@ OnSubmit(filedata:any){
 
 }
 
-  constructor(public sanitizer: DomSanitizer, public bsModalSer: BsModalService) {
+  constructor(public sanitizer: DomSanitizer, public bsModalSer: BsModalService,  public commonSer:CommonService) {
     this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(this.docUrl);
   }
 
@@ -100,5 +107,39 @@ OnSubmit(filedata:any){
 
     };
     this.bsModalHref = this.bsModalSer.show(UploadImgVideoComponent, { id: 1, initialState, class: 'modal-xl', ignoreBackdropClick: true });
+  }
+
+  largefileschange(event){
+    
+  }
+
+  filesuploaded(fileInfo){
+    if(fileInfo && fileInfo.IsSaved){
+      this.commonSer.formData.FileInfo = fileInfo;
+    }
+    
+
+  }
+
+  onSelectFile(event) { 
+    this.fileUploading = true;
+    const file = event.target.files && event.target.files[0];
+    if (file) {
+      var reader = new FileReader();
+      reader.readAsDataURL(file);
+      if(file.type.indexOf('image')> -1){
+        this.format = 'image';
+      } else if(file.type.indexOf('video')> -1){
+        this.format = 'video';
+      }
+      reader.onload = (event) => {
+        this.url = (<FileReader>event.target).result;
+        this.FileInfo.FileName = file.name;
+        this.FileInfo.OriginalContentString = this.url;
+        this.FileInfo.FileSize = file.size;
+        this.FileInfo.FileType = file.type;
+        this.fileUploading = false;
+      }
+    }
   }
 }

@@ -13,6 +13,7 @@ import { ImagepopupComponent } from './components/imagepopup/imagepopup.componen
 import { HttpClientModule } from '@angular/common/http';
 import { UploadImgVideoComponent } from './components/upload-img-video/upload-img-video.component';
 import { AngularFileUploaderModule } from 'angular-file-uploader';
+import { Ng7LargeFilesUploadLibComponent, Ng7LargeFilesUploadLibModule } from 'ng7-large-files-upload-lib';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,12 @@ import { AngularFileUploaderModule } from 'angular-file-uploader';
     ModalModule.forRoot(),
     HttpClientModule,
     AngularFileUploaderModule,
+    // Ng7LargeFilesUploadLibModule,
+    Ng7LargeFilesUploadLibModule.forRoot('http://localhost/SAPI/api/Home/FileUpload'),
   ],
+  exports: [
+		Ng7LargeFilesUploadLibComponent,
+	],
   providers: [],
   bootstrap: [AppComponent]
 })

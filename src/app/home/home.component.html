@@ -197,8 +197,14 @@
         <div class="row">
           <div class="col-md-4 col-sm-12 mb-3">
             <div class="text-center">
-                <angular-file-uploader [config]="afuConfig">
-                </angular-file-uploader>
+                <!-- <angular-file-uploader [config]="afuConfig">
+                </angular-file-uploader> -->
+                <mb-large-files-uploader (updatedAttachmentsEmitter)="largefileschange($event)"
+                name="FileId"
+                (updatedResponseEmitter)="filesuploaded($event)"
+                title="Upload video"  [canUpload]="true"
+                [canSendData]="true" saveButtonText="save" saveButton="false">
+            </mb-large-files-uploader>
             </div>
         </div>
         </div>

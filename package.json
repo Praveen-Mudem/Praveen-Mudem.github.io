@@ -22,6 +22,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
     "angular-file-uploader": "^7.1.1",
     "bootstrap": "^5.2.3",
+    "ng7-large-files-upload-lib": "^1.0.2",
     "ngx-bootstrap": "^10.2.0",
     "ngx-bootstrap-modal": "^2.0.1",
     "rxjs": "~7.5.0",

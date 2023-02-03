@@ -25,3 +25,17 @@
             <button type="button" class="btn btn-danger" (click)="bsModalSer.hide(1)" aria-label="Close">Close</button>
         </div>
     </div> -->
+
+   
+
+
+<div class="form-group mb-0" >
+
+    <mb-large-files-uploader (updatedAttachmentsEmitter)="largefileschange($event)"
+    name="FileId"
+    (updatedResponseEmitter)="filesuploaded($event)"
+    title="Upload video"  [canUpload]="true"
+    [canSendData]="true" [saveButtonText]="" saveButton="false">
+</mb-large-files-uploader>
+
+</div>
