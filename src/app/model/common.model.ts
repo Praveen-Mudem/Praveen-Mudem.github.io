@@ -24,6 +24,7 @@ export class ContactViewInfo{
     IsMailSent:boolean=false;
     
 }
+
 export class FileInfo{
     Url:string;
     GalaryId:number;

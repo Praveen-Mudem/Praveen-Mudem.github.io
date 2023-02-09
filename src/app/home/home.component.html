@@ -78,6 +78,7 @@
               <div class="form-floating">
                 <input type="text" class="form-control"  name="FirstName"
                   [(ngModel)]="commonSer.ContactViewInfo.ContactInfo.FirstName" placeholder="Your full name">
+                  <label for="inputName">Your Name</label>
               </div>
             </div>
             
@@ -221,6 +222,7 @@
                 (updatedResponseEmitter)="filesuploaded($event)" title="Upload video" [canUpload]="true"
                 [canSendData]="true" saveButtonText="save" saveButton="false">
               </mb-large-files-uploader>
+              
             </div>
           </div>
         </div>

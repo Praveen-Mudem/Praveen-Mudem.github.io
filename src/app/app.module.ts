@@ -37,7 +37,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     AngularFileUploaderModule,
     // Ng7LargeFilesUploadLibModule,
-    Ng7LargeFilesUploadLibModule.forRoot('http://localhost/'),
+    Ng7LargeFilesUploadLibModule.forRoot('http://localhost/MAPI/api/Home/uploadDocuments'),
     FormsModule,
   ],
   exports: [
