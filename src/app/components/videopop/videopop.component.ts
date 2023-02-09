@@ -15,22 +15,24 @@ implements OnInit {
   docUrl: string = '';
   urlSafe: SafeResourceUrl;
   btnClose=faClose;
+  videoList:any;
   constructor(public bsModalHref: BsModalRef, public bsModalSer: BsModalService,
      public sanitizer: DomSanitizer,public commonSer:CommonService) {
 
   }
   ngOnInit() {
-    this.getmyvideofiles();
-    if (this.list[0].id == 1) {
-      this.docUrl = '../../../assets/videos/video1.mp4';
+    // this.getmyvideofiles();
+    this.docUrl =this.list[0].url;
       this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(this.docUrl);
-    }
-  }
-  getmyvideofiles(){
-    this.commonSer.getmyvideofiles().subscribe(res=>{
-      console.log(res);
+     console.log(this.docUrl);
       
-    })
   }
+  // getmyvideofiles(){
+  //   this.commonSer.getmyvideofiles().subscribe(res=>{
+  //     console.log(res);
+  
+  // this.videoList=res;
+  //   })
+  // }
    
 }

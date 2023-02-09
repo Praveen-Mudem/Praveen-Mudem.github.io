@@ -1,5 +1,9 @@
 @import "variable";
 
+.bg-theam-1{
+    background-color: $color2;
+}
+
 .cursor-pointer {
     cursor: pointer;
 }
@@ -17,7 +21,7 @@
         &.active{
             font-size: 16px;
             color: #fff;
-            background-color: #666666;
+            background-color: $color4;
         }
     }
 }

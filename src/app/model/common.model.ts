@@ -1,4 +1,28 @@
 export class Common {
+    Id:number=0;
+    FirstName:string;
+    Surname:string;
+    EMail:string;
+    MobileNo:string;
+    CountryCode:string;
+    Description:string;
+}
+export class ContactData{
+    Id:number;
+    FirstName:string='';
+    Surname:string;
+    EMail:string;
+    MobileNo:string;
+    CountryCode:string;
+    Description:string;
+
+}
+export class ContactViewInfo{
+    ContactInfo: ContactData ;
+    IsSaved:boolean=false;
+    Message:string='';
+    IsMailSent:boolean=false;
+    
 }
 export class FileInfo{
     Url:string;

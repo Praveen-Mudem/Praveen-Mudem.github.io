@@ -1,14 +1,13 @@
 <div id="parentDiv" scrollSpy [spiedTags]="['DIV']" (sectionChange)="onSectionChange($event)"
   style="height:100vh;overflow-y: scroll;">
   <div class=" sticky-sm-top">
-    <nav class="navbar navbar-expand-lg navbar-light py-0 bg-dark">
+    <nav class="navbar navbar-expand-lg py-0 bg-theam-1">
       <div class="container-fluid">
         <a class="navbar-brand text-white" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button"  data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link cursor-pointer py-3" [ngClass]="{'active':isActiveNav=='about'}" aria-current="page"
@@ -41,7 +40,7 @@
       </div>
     </nav>
   </div>
-  <div id="about" class="bg-info py-4">
+  <div id="about" class="bg-theam-2 py-4">
     <app-about></app-about>
 
   </div>
@@ -73,61 +72,80 @@
         <div>
           <!-- <span>For examples of the quality and quantity of my work, please checkout the numerous projects on my Github
           account.</span> -->
+          <form (submit)="sendMail()">
           <div class="row pb-3">
             <div class="col-md">
               <div class="form-floating">
-                <input type="email" class="form-control" id="inputName" placeholder="Your full name">
-                <label for="inputName">Your name</label>
+                <input type="text" class="form-control"  name="FirstName"
+                  [(ngModel)]="commonSer.ContactViewInfo.ContactInfo.FirstName" placeholder="Your full name">
               </div>
             </div>
+            
             <div class="col-md">
               <div class="form-floating">
-                <input type="email" class="form-control" id="inputAddress" placeholder="mail@address.com">
-                <label for="inputAddress">Your email address</label>
+                <input type="text" class="form-control" id="inputSurname" name="Surname"
+                  [(ngModel)]="commonSer.ContactViewInfo.ContactInfo.Surname" placeholder="Your Surname">
+                <label for="inputName">Your Surname</label>
               </div>
             </div>
           </div>
           <div class="row pb-3">
             <div class="col-md">
               <div class="form-floating">
-                <input type="email" class="form-control" id="inputWebSite" placeholder="Your address">
-                <label for="inputWebSite">Company website</label>
+                <input type="email" class="form-control" name="EMail" [(ngModel)]="commonSer.ContactViewInfo.ContactInfo.EMail" id="inputEMail"
+                  placeholder="mail@address.com">
+                <label for="inputEMail">Your email address</label>
+              </div>
+            </div>
+          </div>
+          <div class="row pb-3">
+            
+            <div class="col-md">
+              <div class="form-floating">
+                <input type="text" class="form-control" name="CountryCode" 
+                 [(ngModel)]="commonSer.ContactViewInfo.ContactInfo.CountryCode" id="inputCountryCode"
+                  placeholder="+91">
+                <label for="inputCountryCode">Your CountryCode</label>
               </div>
             </div>
             <div class="col-md">
               <div class="form-floating">
-                <input type="email" class="form-control" id="inputContract" placeholder="Working hours">
-                <label for="inputContract">Contract duration (optional)</label>
+                <input type="text" class="form-control" name="MobileNo"
+                [(ngModel)]="commonSer.ContactViewInfo.ContactInfo.MobileNo" id="inputMobileNo"
+                  placeholder="0123456789">
+                <label for="inputEMail">Your MobileNo</label>
+                
               </div>
             </div>
           </div>
           <div class="form-floating">
-            <textarea class="form-control" placeholder="Leave a comment here" id="txtComments"
-              style="height: 100px"></textarea>
+            <textarea class="form-control" type="text" name="Description" [(ngModel)]="commonSer.ContactViewInfo.ContactInfo.Description"
+              placeholder="Leave a comment here" id="txtComments" style="height: 100px"></textarea>
             <label for="txtComments">Comments</label>
-          </div>
+          </div> 
           <div class="text-center py-3">
-            <a href="#" class="btn btn-primary w-25 h-15" (click)="sendMail()">Send</a>
+            <button class="btn btn-primary w-25 h-15" type="submit">Send</button>
           </div>
+        </form>
         </div>
       </div>
     </div>
   </div>
 
 
-  <div id="videos" class="bg-info py-4">
+  <div id="videos" class="bg-theam-2 py-4">
     <div class="container">
       <h1><fa-icon [icon]="videoIcon"></fa-icon> My Videos</h1>
       <p>Here are my personal video files</p>
       <div class="row">
-        <div class="col-md-4 mb-3">
-          <div class="position-relative" (click)="openVideo(1)">
-            <img src="../../assets/images/image1.jpeg" class="rounded img-fluid w-100" alt="...">  
-            <img src="../../assets/images/video-play-icon.png" class="position-absolute video-icon" alt="...">          
+        <div class="col-md-4 mb-3" *ngFor="let video of videoList; let i=index">
+          <div class="position-relative" (click)="openVideo(i,video)">
+            <img src="../../assets/images/image1.jpeg" class="rounded img-fluid w-100" alt="...">
+            <img src="../../assets/images/video-play-icon.png" class="position-absolute video-icon" alt="...">
           </div>
-          
+
         </div>
-        <div class="col-md-4 mb-3">
+        <!-- <div class="col-md-4 mb-3">
           <div class="position-relative" (click)="openVideo(1)">
             <img src="../../assets/images/image2.jpeg" class="rounded img-fluid w-100" alt="...">
             <img src="../../assets/images/video-play-icon.png" class="position-absolute video-icon" alt="...">
@@ -154,14 +172,14 @@
             <img src="../../assets/images/image1.jpeg" class="rounded img-fluid w-100" alt="...">
             <img src="../../assets/images/video-play-icon.png" class="position-absolute video-icon" alt="...">
           </div>
-        </div>
+        </div> -->
 
       </div>
     </div>
 
   </div>
-  <div id="photos">
-    <div id="contact" class="py-4">
+  <div id="photos" class="py-4">
+    <div id="contact">
       <div class="container">
         <h1><fa-icon [icon]="mobileIcon"></fa-icon> My Photos</h1>
         <p>A couple of my photos.</p>
@@ -183,38 +201,38 @@
             </div>
           </div>
           <div class="text-center py-3">
-            <button class="btn btn-primary w-25 h-15"  (click)="openImagePop(1)">View All</button>
+            <button class="btn btn-primary w-25 h-15" (click)="openImagePop(1)">View All</button>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div id="upload" class="bg-info py-4">
-    <div id="contact" class="py-4">
+  <div id="upload" class="bg-theam-2 py-4">
+    <div>
       <div class="container">
         <h1><fa-icon [icon]="mobileIcon"></fa-icon> Upload Image & Video</h1>
         <p></p>
         <div class="row">
           <div class="col-md-4 col-sm-12 mb-3">
             <div class="text-center">
-                <!-- <angular-file-uploader [config]="afuConfig">
+              <!-- <angular-file-uploader [config]="afuConfig">
                 </angular-file-uploader> -->
-                <mb-large-files-uploader (updatedAttachmentsEmitter)="largefileschange($event)"
-                name="FileId"
-                (updatedResponseEmitter)="filesuploaded($event)"
-                title="Upload video"  [canUpload]="true"
+              <mb-large-files-uploader (updatedAttachmentsEmitter)="largefileschange($event)" name="FileId"
+                (updatedResponseEmitter)="filesuploaded($event)" title="Upload video" [canUpload]="true"
                 [canSendData]="true" saveButtonText="save" saveButton="false">
-            </mb-large-files-uploader>
+              </mb-large-files-uploader>
             </div>
-        </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  
+
+ 
+
 
   <div>
-    <footer class="text-center bg-light py-3">
+    <footer class="text-center bg-theam-1 py-3 text-white">
       Copy rights @2023
       <!-- Website source available <a href="">here</a> and <a href="">here</a> |
   Powered by <a href="" target="_blank">GitHub pages</a>, <a href="">Heroku</a> and <a href="">Cloudflare</a> -->

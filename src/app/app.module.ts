@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UploadImgVideoComponent } from './components/upload-img-video/upload-img-video.component';
 import { AngularFileUploaderModule } from 'angular-file-uploader';
 import { Ng7LargeFilesUploadLibComponent, Ng7LargeFilesUploadLibModule } from 'ng7-large-files-upload-lib';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { Ng7LargeFilesUploadLibComponent, Ng7LargeFilesUploadLibModule } from 'n
     HttpClientModule,
     AngularFileUploaderModule,
     // Ng7LargeFilesUploadLibModule,
-    Ng7LargeFilesUploadLibModule.forRoot('http://localhost/SAPI/api/Home/FileUpload'),
+    Ng7LargeFilesUploadLibModule.forRoot('http://localhost/'),
+    FormsModule,
   ],
   exports: [
 		Ng7LargeFilesUploadLibComponent,

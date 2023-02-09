@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { faBriefcase, faInfoCircle, faCode, faMobileScreen, faVideo, faClose, faPlayCircle, faUpload } from '@fortawesome/free-solid-svg-icons';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ImagepopupComponent } from '../components/imagepopup/imagepopup.component';
 import { UploadImgVideoComponent } from '../components/upload-img-video/upload-img-video.component';
 import { VideopopComponent } from '../components/videopop/videopop.component';
-import { GallaryFileInfo } from '../model/common.model';
+import { Common, ContactData, ContactViewInfo, GallaryFileInfo } from '../model/common.model';
 import { CommonService } from '../service/common.service';
 
 
@@ -15,7 +15,7 @@ import { CommonService } from '../service/common.service';
   styleUrls: ['./home.component.scss']
 })
 
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
   briefCaseIcon = faBriefcase;
   infoIcon = faInfoCircle;
@@ -44,7 +44,7 @@ fileUploading:boolean;
 url:any;
   format:any;
 FileInfo:GallaryFileInfo = new GallaryFileInfo();
-
+videoList:any;
 handleFileInput(event){
 
 }
@@ -54,8 +54,15 @@ OnSubmit(filedata:any){
 
   constructor(public sanitizer: DomSanitizer, public bsModalSer: BsModalService,  public commonSer:CommonService) {
     this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(this.docUrl);
+    commonSer.ContactViewInfo.ContactInfo = new ContactData();
+    
+    
   }
 
+  ngOnInit() {
+   
+    this.getmyvideofiles();
+  }
   scrollTo(sectionId: string) {
     let parentelement = document.getElementById('parentDiv');
     let element = document.querySelector('#' + sectionId);
@@ -71,7 +78,13 @@ OnSubmit(filedata:any){
     this.isActiveNav = sectionId;
   }
   sendMail() {
-
+    console.log(this.commonSer.ContactViewInfo);
+    
+    
+    this.commonSer.savecontactinfo().subscribe((res:any)=>{
+      console.log(res);
+      
+    })
   }
   onSectionChange(sectionId: string) {
     this.currentSection = sectionId;
@@ -79,10 +92,10 @@ OnSubmit(filedata:any){
     console.log(sectionId);
 
   }
-  openVideo(id) {
+  openVideo(id,url) {
     const initialState = {
       list: [
-        { id: id }
+        { id: id,url:url }
       ]
 
     };
@@ -141,5 +154,12 @@ OnSubmit(filedata:any){
         this.fileUploading = false;
       }
     }
+  }
+  getmyvideofiles(){
+    this.commonSer.getmyvideofiles().subscribe(res=>{
+      console.log(res);
+  
+  this.videoList=res;
+    })
   }
 }

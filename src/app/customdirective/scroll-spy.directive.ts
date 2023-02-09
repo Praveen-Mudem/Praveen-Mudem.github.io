@@ -15,7 +15,7 @@ export class ScrollSpyDirective {
        
         let currentSection: string='about';
         const children = this._el.nativeElement.children;
-        const scrollTop = event.target.scrollTop+56;
+        const scrollTop = event.target.scrollTop+57;
         const parentOffset = event.target.offsetTop;
         for (let i = 0; i < children.length; i++) {
             const element = children[i];

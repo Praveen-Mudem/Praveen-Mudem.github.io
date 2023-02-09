@@ -2,7 +2,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { FileInfo } from '../model/common.model';
+import { ContactViewInfo,  FileInfo } from '../model/common.model';
 import CONFIG from './Const';
 @Injectable({
   providedIn: 'root'
@@ -15,6 +15,7 @@ export class CommonService {
   IsLoggedIn$ = this.loggedInSource.asObservable();
   readonly baseUrl = CONFIG.BASE_URL+'api/Home';
   formData:FileInfo = new FileInfo();
+  ContactViewInfo:ContactViewInfo = new ContactViewInfo();
 
   constructor(private http:HttpClient, @Inject(PLATFORM_ID) platformId: Object) {
     this.isBrowser = isPlatformBrowser(platformId);
@@ -26,5 +27,8 @@ export class CommonService {
    }
    getmyimagefiles(){
     return this.http.get(this.baseUrl+'/getmyimagefiles');
+   }
+   savecontactinfo(){
+    return this.http.post(this.baseUrl+'/savecontactinfo',this.ContactViewInfo);
    }
 }
