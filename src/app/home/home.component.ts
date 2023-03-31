@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
   docUrl: string = '../../assets/videos/video1.mp4';
   bsModalHref: BsModalRef;
 
-
+  imgList:any[];
   list:any[];
   imageUrl:any;
   afuConfig = {
@@ -60,7 +60,7 @@ OnSubmit(filedata:any){
   }
 
   ngOnInit() {
-   
+   this.getmyimages();
     this.getmyvideofiles();
   }
   scrollTo(sectionId: string) {
@@ -160,6 +160,11 @@ OnSubmit(filedata:any){
       console.log(res);
   
   this.videoList=res;
+    })
+  }
+  getmyimages(){
+    this.commonSer.getmyimagefiles().subscribe((res:any)=>{
+      this.imgList=res
     })
   }
 }
